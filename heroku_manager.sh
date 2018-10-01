@@ -52,6 +52,7 @@ function heroku_manager {
       echo -e "General options are:\n"
       echo -e "   -a, --app                    The app to use."
       echo -e "   -d, --database               The databse to use.\n"
+      echo -e "   -s, --save-file              The save file to destination.\n"
   fi
 
   if [ -z "$error" ]; then
@@ -62,20 +63,20 @@ function heroku_manager {
       if [ $action = "kill_services" ]; then
         echo "Killing ruby processes..."
         killall ruby
-        echo "Killing sidekiq processes..."
-        killall sidekiq
+        # echo "Killing sidekiq processes..."
+        # killall sidekiq
       fi
 
       if [ $action = "restore_db" ]; then
         heroku_manager kill_services
         bundle exec rake db:drop
         bundle exec rake db:create
-        pg_restore --verbose --clean --no-owner -h localhost -d $database $app
+        pg_restore --verbose --clean --no-owner -h localhost -d $database $db_file
         bundle exec rake db:migrate
       fi
 
       if [ $action = "backup_db" ]; then
-        heroku pg:backups capture --app $app
+        heroku pg:backups:capture --app $app
       fi
 
       if [ $action = "retrieve_db" ]; then
