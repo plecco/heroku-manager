@@ -47,11 +47,11 @@ function heroku_manager {
       echo -e "   restore_db                   Restore local database with postgres dump."
       echo -e "   retrieve_db                  Download copy of captured database."
       echo -e "   reset_db                     Capture current database, download and restore to local postgres database instance."
-      echo -e "   kill_services                Kill ruby and sidekiq instances.\n"
-      echo -e "   help                         This help text."
+      echo -e "   kill_services                Kill ruby and sidekiq instances."
+      echo -e "   help                         This help text.\n"
       echo -e "General options are:\n"
       echo -e "   -a, --app                    The app to use."
-      echo -e "   -d, --database               The databse to use.\n"
+      echo -e "   -d, --database               The databse to use."
       echo -e "   -s, --save-file              The save file to destination.\n"
   fi
 
