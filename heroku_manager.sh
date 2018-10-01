@@ -52,7 +52,7 @@ function heroku_manager {
       echo -e "General options are:\n"
       echo -e "   -a, --app                    The app to use."
       echo -e "   -d, --database               The databse to use."
-      echo -e "   -s, --save-file              The save file to destination.\n"
+      echo -e "   -s, --save-file              The file to use / save.\n"
   fi
 
   if [ -z "$error" ]; then
