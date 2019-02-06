@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # App: Heroku Manager
-# Description: Built to help developers reduce the time they spend looking instructions on how to use Heroku CLI tool.
+# Description: Built to help developers reduce the time they spend looking up instructions on how to use Heroku CLI tool.
 # Author: Jason Stokes
 # Email: jpstokes@plecco.net
 # Verison: 1.0
