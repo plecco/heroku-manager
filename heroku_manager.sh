@@ -57,22 +57,26 @@ function heroku_manager {
 
   if [ -z "$error" ]; then
       if [ -z "$db_file" ]; then
-          db_file=~/Downloads/latest.dump
+          db_file=./latest.dump
       fi
 
       if [ $action = "kill_services" ]; then
         echo "Killing ruby processes..."
-        killall ruby
+        killall -9 ruby
         # echo "Killing sidekiq processes..."
         # killall sidekiq
       fi
 
       if [ $action = "restore_db" ]; then
         heroku_manager kill_services
+        echo "Dropping database..."
         bundle exec rake db:drop
+        echo "Creating database..."
         bundle exec rake db:create
+        echo "Restoring database..."
         pg_restore --verbose --clean --no-owner -h localhost -d $database $db_file
         bundle exec rake db:migrate
+        echo "Restoration complete."
       fi
 
       if [ $action = "backup_db" ]; then
