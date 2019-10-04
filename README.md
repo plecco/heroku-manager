@@ -17,3 +17,13 @@ This will install the script in `.heroku_manager` in your home directory and sou
 If using bash you'll need to add the following line to your .bashrc file:
 
 `source $HOME/.heroku_manager/heroku_manager.sh`
+
+### Example
+
+To perform backup of example db on app example and save to downloads then use download to restore local db
+
+`heroku_manager reset_db -d example -s ~/Downloads/example-backup.sql -a example`
+
+For more help, do the following:
+
+`heroku_manager help`
